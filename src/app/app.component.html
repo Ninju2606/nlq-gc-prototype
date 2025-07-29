@@ -1,0 +1,35 @@
+<h1>Natural Language Query to Graph Code</h1>
+<div class="container">
+  <div class="left">
+    <textarea placeholder="Anfrage formulieren…" [(ngModel)]="query"></textarea>
+    <div class="floating-input">
+      <input type="text" placeholder="Nutzername" [(ngModel)]="username">
+    </div>
+    <div class="floating-select">
+      <select [(ngModel)]="promptKeywordSelected">
+        <option selected value="">Keine Auswahl</option>
+        <option *ngFor="let prompt of promptsKeywords" [value]="prompt.key">{{ prompt.key }}</option>
+      </select>
+      <label class="active">Stichwort-Prompt wählen</label>
+    </div>
+    <div class="floating-select">
+      <select [(ngModel)]="promptGCSelected">
+        <option selected value="">Keine Auswahl</option>
+        <option *ngFor="let prompt of promptsGC" [value]="prompt.key">{{ prompt.key }}</option>
+      </select>
+      <label class="active">GraphCode-Prompt wählen</label>
+    </div>
+    <div class="floating-select">
+      <select [(ngModel)]="llmSelected">
+        <option selected value="">Keine Auswahl</option>
+        <option *ngFor="let llm of llms" [value]="llm">{{ llm }}</option>
+      </select>
+      <label class="active">LLM wählen</label>
+    </div>
+    <button class="button" (click)="transmitQuery()">Graph-Code generieren</button>
+    <div class="info-box">Weitere Informationen</div>
+  </div>
+  <div class="right">
+    <div class="matrix-box">Graph-Code Matrix</div>
+  </div>
+</div>
