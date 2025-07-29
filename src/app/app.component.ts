@@ -1,12 +1,10 @@
 import { AfterViewInit, Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatSelectModule } from '@angular/material/select';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule, } from '@angular/forms';
 import { HttpCommunicatorService } from './http-communicator.service';
 import { Observable } from 'rxjs';
-import { HttpClientModule, HttpResponse } from '@angular/common/http';
+import { HttpResponse } from '@angular/common/http';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 export interface Prompt {
   key: string;
@@ -26,7 +24,7 @@ export interface GraphCode {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, MatSelectModule, MatIconModule, FormsModule],
+  imports: [CommonModule, MatProgressSpinnerModule, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
