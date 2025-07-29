@@ -30,6 +30,7 @@
     </div>
     <button class="button" (click)="transmitQuery()">Graph-Code generieren</button>
     <div class="info-box">Weitere Informationen</div>
+    <button (click)="encodingPopup.open()" class="encoding-button">Encoding-Mappings bearbeiten</button>
   </div>
   <div class="right">
     <div class="matrix-box">Graph-Code Matrix</div>
@@ -44,3 +45,4 @@
   </div>
 </div>
 <prompt-pop-up></prompt-pop-up>
+<encoding-pop-up></encoding-pop-up>

@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PromptPopUpComponent } from "./prompt-pop-up/prompt-pop-up.component";
+import { EncodingPopUpComponent } from './encoding-pop-up/encoding-pop-up.component';
 
 export interface Prompt {
   key: string;
@@ -25,13 +26,14 @@ export interface GraphCode {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, MatProgressSpinnerModule, FormsModule, PromptPopUpComponent],
+  imports: [CommonModule, MatProgressSpinnerModule, FormsModule, PromptPopUpComponent, EncodingPopUpComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent implements AfterViewInit {
 
   @ViewChild(PromptPopUpComponent) promptPopup!: PromptPopUpComponent;
+  @ViewChild(EncodingPopUpComponent) encodingPopup!: EncodingPopUpComponent;
 
   title = 'NLQ-GC-Prototyp';
   promptGCSelected: string = '';

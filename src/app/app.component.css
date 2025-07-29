@@ -68,7 +68,7 @@ button {
     align-items: center;
     border: 1px solid #ccc;
     border-radius: 4px;
-    min-height: 40vh;
+    min-height: 30vh;
 }
 
 .matrix-box {
@@ -159,6 +159,7 @@ input {
 button {
     background-color: #007bff;
     color: white;
+    border: none;
 }
 
 button:hover {
