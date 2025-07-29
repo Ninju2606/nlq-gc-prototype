@@ -1,0 +1,24 @@
+<div *ngIf="isOpen()" class="popup-background">
+    <div class="popup-container">
+        <button class="close-button" (click)="close()">X</button>
+        <h2>{{ name }}</h2>
+
+        <div class="popup-content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Schlüssel</th>
+                        <th>Prompt</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let prompt of prompts">
+                        <td>{{ prompt.key }}</td>
+                        <td><span class="pre-wrap-text">{{ prompt.prompt }}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p *ngIf="prompts.length === 0">Keine Prompts vorhanden.</p>
+        </div>
+    </div>
+</div>

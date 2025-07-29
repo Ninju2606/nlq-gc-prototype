@@ -1,10 +1,11 @@
-import { AfterViewInit, Component, NgModule } from '@angular/core';
+import { AfterViewInit, Component, NgModule, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, } from '@angular/forms';
 import { HttpCommunicatorService } from './http-communicator.service';
 import { Observable } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { PromptPopUpComponent } from "./prompt-pop-up/prompt-pop-up.component";
 
 export interface Prompt {
   key: string;
@@ -24,11 +25,13 @@ export interface GraphCode {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, MatProgressSpinnerModule, FormsModule],
+  imports: [CommonModule, MatProgressSpinnerModule, FormsModule, PromptPopUpComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent implements AfterViewInit {
+
+  @ViewChild(PromptPopUpComponent) promptPopup!: PromptPopUpComponent;
 
   title = 'NLQ-GC-Prototyp';
   promptGCSelected: string = '';
@@ -53,6 +56,14 @@ export class AppComponent implements AfterViewInit {
     this.parsePrompts(this.httpService.getPromptsGC(), this.promptsGC);
     this.parsePrompts(this.httpService.getPromptsKeyword(), this.promptsKeywords);
     this.parseLLMs(this.httpService.getLLMs());
+  }
+
+  public showGCPrompts(): void {
+    this.promptPopup.open(this.promptsGC, 'GraphCode Prompts');
+  }
+
+  public showKeywordPrompts(): void {
+    this.promptPopup.open(this.promptsKeywords, 'Keyword Prompts');
   }
 
   public async transmitQuery(): Promise<void> {

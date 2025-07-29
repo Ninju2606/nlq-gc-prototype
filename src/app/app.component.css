@@ -55,8 +55,6 @@ button {
 }
 
 .button {
-    background-color: #007bff;
-    color: white;
     border: none;
     cursor: pointer;
 }
@@ -80,6 +78,9 @@ button {
 .floating-select {
     position: relative;
     width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 select {
@@ -113,6 +114,19 @@ input {
     box-sizing: border-box;
 }
 
+.loading-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    position: relative;
+    z-index: 5;
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .popup-background {
     z-index: 2;
     position: fixed;
@@ -126,17 +140,27 @@ input {
     align-items: center;
 }
 
-.loading-container {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    position: relative;
-    z-index: 5;
-    display: inline-block;
+.info-button {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
     display: flex;
-    /* Aktiviert Flexbox */
     justify-content: center;
-    /* Zentriert horizontal */
     align-items: center;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+}
+
+button:hover {
+    background-color: #0056b3;
 }

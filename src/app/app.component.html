@@ -11,6 +11,7 @@
         <option *ngFor="let prompt of promptsKeywords" [value]="prompt.key">{{ prompt.key }}</option>
       </select>
       <label class="active">Stichwort-Prompt wählen</label>
+      <button class="info-button" (click)="showKeywordPrompts()">?</button>
     </div>
     <div class="floating-select">
       <select [(ngModel)]="promptGCSelected">
@@ -18,6 +19,7 @@
         <option *ngFor="let prompt of promptsGC" [value]="prompt.key">{{ prompt.key }}</option>
       </select>
       <label class="active">GraphCode-Prompt wählen</label>
+      <button class="info-button" (click)="showGCPrompts()">?</button>
     </div>
     <div class="floating-select">
       <select [(ngModel)]="llmSelected">
@@ -41,3 +43,4 @@
     </div>
   </div>
 </div>
+<prompt-pop-up></prompt-pop-up>
