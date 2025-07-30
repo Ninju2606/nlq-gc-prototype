@@ -34,7 +34,10 @@
     <button (click)="encodingPopup.open()" class="encoding-button">Encoding-Mappings bearbeiten</button>
   </div>
   <div class="right">
-    <div class="matrix-box">Graph-Code Matrix</div>
+    <div class="matrix-box">
+      <graph-code *ngIf="currentGraphCode" [dictionary]="currentGraphCode.dictionary"
+        [matrix]="currentGraphCode.matrix" />
+    </div>
   </div>
 </div>
 

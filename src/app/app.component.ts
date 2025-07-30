@@ -7,6 +7,7 @@ import { HttpResponse } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PromptPopUpComponent } from "./prompt-pop-up/prompt-pop-up.component";
 import { EncodingPopUpComponent } from './encoding-pop-up/encoding-pop-up.component';
+import { GraphCodeComponent } from './graph-code/graph-code.component';
 
 export interface Prompt {
   key: string;
@@ -26,7 +27,7 @@ export interface GraphCode {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, MatProgressSpinnerModule, FormsModule, PromptPopUpComponent, EncodingPopUpComponent],
+  imports: [CommonModule, MatProgressSpinnerModule, FormsModule, PromptPopUpComponent, EncodingPopUpComponent, GraphCodeComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -1,0 +1,14 @@
+<div class="graph-code-container">
+
+    <table>
+        <tr>
+            <th></th>
+            <th class="row-header" *ngFor="let item of dictionary"><span class="rotate-header">{{ item }}</span></th>
+        </tr>
+        <tr *ngFor="let row of matrix; let rowIndex = index">
+            <th class="coll-header">{{ dictionary[rowIndex] }}</th>
+            <td *ngFor="let entry of row; let colIndex = index" [class.information]="foo(entry) != ''"
+                [title]="foo(entry)"> {{ entry }}</td>
+        </tr>
+    </table>
+</div>

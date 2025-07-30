@@ -1,0 +1,44 @@
+.row-header {
+    border: 1px solid #ccc;
+    background-color: #e0e0e0;
+    padding: 10px;
+
+    vertical-align: bottom;
+    text-align: center;
+}
+
+.rotate-header {
+    -ms-writing-mode: tb-rl;
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+}
+
+.coll-header {
+    border: 1px solid #ccc;
+    background-color: #e0e0e0;
+    padding: 10px;
+
+    text-align: right;
+}
+
+td {
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 1.2em;
+    cursor: default;
+}
+
+td:hover {
+    background-color: #f5f5f5;
+}
+
+.information {
+    cursor: help;
+}
