@@ -29,7 +29,8 @@
       <label class="active">LLM wählen</label>
     </div>
     <button class="button" (click)="transmitQuery()">Graph-Code generieren</button>
-    <div class="info-box">Weitere Informationen</div>
+    <textarea class="info-box" placeholder="Beschreibung..." disabled>{{currentGraphCode?.description}}</textarea>
+
     <button (click)="encodingPopup.open()" class="encoding-button">Encoding-Mappings bearbeiten</button>
   </div>
   <div class="right">

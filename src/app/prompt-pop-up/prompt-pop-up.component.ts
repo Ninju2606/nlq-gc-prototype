@@ -17,7 +17,6 @@ export class PromptPopUpComponent {
   open(prompts: Prompt[], name: string): void {
     this.prompts = prompts;
     this.name = name;
-    console.log(prompts[0].prompt);
   }
 
   isOpen(): boolean {
