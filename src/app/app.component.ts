@@ -95,7 +95,6 @@ export class AppComponent implements AfterViewInit {
     response.subscribe({
       next: res => {
         graphCode = JSON.parse(JSON.stringify(res.body));
-        console.log(graphCode);
       },
       complete: () => {
         if (graphCode == null || graphCode.state == "NOT_AVAILABLE") {
