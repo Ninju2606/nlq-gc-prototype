@@ -34,8 +34,8 @@ export class EncodingPopUpComponent {
   }
 
   addMapping(): void {
-    if (this.inputId <= 0) alert("Die ID muss größer als 0 sein!");
-    else if (this.inputAttribute.length == 0) alert("Es wurde kein Attribut vorgegeben");
+    if (this.inputId <= 0) alert('Die ID muss größer als 0 sein!');
+    else if (this.inputAttribute.length == 0) alert('Es wurde kein Attribut vorgegeben');
     else {
       this.encodingService.addMapping(this.inputId, this.inputAttribute, this.inputIdentity);
       this.resetInput();

@@ -1,11 +1,11 @@
-import { AfterViewInit, Component, NgModule, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, } from '@angular/forms';
 import { HttpCommunicatorService } from './http-communicator.service';
 import { Observable } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { PromptPopUpComponent } from "./prompt-pop-up/prompt-pop-up.component";
+import { PromptPopUpComponent } from './prompt-pop-up/prompt-pop-up.component';
 import { EncodingPopUpComponent } from './encoding-pop-up/encoding-pop-up.component';
 import { GraphCodeComponent } from './graph-code/graph-code.component';
 
@@ -71,7 +71,7 @@ export class AppComponent implements AfterViewInit {
 
   public async transmitQuery(): Promise<void> {
     if (this.query.length == 0 || this.username.length == 0) {
-      alert("Bitte gib eine Anfrage sowie einen Nutzernamen an!");
+      alert('Bitte gib eine Anfrage sowie einen Nutzernamen an!');
       return;
     }
     this.loading = true;
@@ -79,6 +79,11 @@ export class AppComponent implements AfterViewInit {
     var response = this.httpService.sendRequest(this.query, this.username, this.promptGCSelected, this.promptKeywordSelected, this.llmSelected);
     var transactionId = '';
     response.subscribe({
+      error: error => {
+        console.log(error);
+        alert('Es gab einen Fehler bei der GraphCode-Verarbeitung');
+        this.loading = false;
+      },
       next: res => {
         transactionId = JSON.parse(JSON.stringify(res.body))['transactionId'];
       },
@@ -93,18 +98,24 @@ export class AppComponent implements AfterViewInit {
     var response = this.httpService.checkTransaction(transactionId);
     var graphCode: GraphCode | null = null;
     response.subscribe({
+      error: error => {
+        console.log(error);
+        alert('Es gab einen Fehler bei der GraphCode-Verarbeitung');
+        this.loading = false;
+      },
       next: res => {
         graphCode = JSON.parse(JSON.stringify(res.body));
       },
       complete: () => {
-        if (graphCode == null || graphCode.state == "NOT_AVAILABLE") {
-          alert("Es gab einen Fehler bei der GraphCode-Verarbeitung");
+        if (graphCode == null || graphCode.state == 'NOT_AVAILABLE') {
+          console.log('No graph code was present');
+          alert('Es gab einen Fehler bei der GraphCode-Verarbeitung');
           this.loading = false;
         }
-        else if (graphCode.state == "PENDING") setTimeout(() => this.pollTransaction(transactionId), 1000);
+        else if (graphCode.state == 'PENDING') setTimeout(() => this.pollTransaction(transactionId), 1000);
         else {
           this.loading = false;
-          if (graphCode.state == "FINISHED") this.currentGraphCode = graphCode;
+          if (graphCode.state == 'FINISHED') this.currentGraphCode = graphCode;
           else alert(graphCode.error)
         }
       }
